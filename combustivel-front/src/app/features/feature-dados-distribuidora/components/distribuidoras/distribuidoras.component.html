@@ -1,0 +1,54 @@
+<h1>Distribuidoras</h1>
+<ng-container>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Bandeira</th>
+      <th>Codigo de Instalação</th>
+      <th>Municípios </th>
+      <th>Sigla da Região</th>
+      <th>Sigla do Estado</th>
+      <th>Data da Coleta</th>
+      <th>Revendedora</th>
+      <th>Produtos</th>
+      <th>Unidades de medidas</th>
+      <th>Valor da Compra</th>
+      <th>Valor da Venda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let distribuidora of distribuidoras  | paginate : {
+      itemsPerPage: tableSize,
+      currentPage: page,
+      totalItems: count
+    };
+   ">
+      <td>{{ distribuidora.bandeira }}</td>
+      <td>{{ distribuidora.codInstalacao }}</td>
+      <td>{{ distribuidora.municipio }}</td>
+      <td>{{ distribuidora.siglaRegiao }}</td>
+      <td>{{ distribuidora.siglaEstado }}</td>
+      <td>{{ distribuidora.dataColeta | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ distribuidora.revendedora }}</td>
+      <td>{{ distribuidora.produto }}</td>
+      <td>{{ distribuidora.unidadeMedida }}</td>
+      <td>{{ distribuidora.valorCompra | currency}}</td>
+      <td>{{ distribuidora.valorVenda | currency}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex float-right">
+  <pagination-controls
+    responsive="true"
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)">
+  </pagination-controls>
+</div>
+</ng-container>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-border text-success" role="status" *ngIf="!this.loading">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

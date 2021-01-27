@@ -1,0 +1,45 @@
+<h1>Media de preço por municipio</h1>
+
+<form [formGroup]="mediaPrecocombustivelForm">
+  <div class="form-row align-items-center">
+
+    <div class="col-sm-2 my-1">
+      <label>Municipio: </label>
+      <input
+      formControlName="municipio"
+      type="text"
+      id="municipio"
+      name="municipio"
+      [ngClass]="[
+          isFieldValid(mediaPrecocombustivelForm, 'municipio') ? 'input-invalid' : '',
+          'form-control',
+          'form-control-sm'
+       ]"
+       />
+      <div class="mt-1 text-danger  text-monospace" *ngIf="isFieldValid(mediaPrecocombustivelForm, 'municipio')">
+       <small>{{ mediaPrecocombustivelForm.getFirstErrorFrom('municipio', 'Municipio') }}</small>
+      </div>
+    </div>
+
+    <button
+    type="button"
+    class="btn btn-success mt-4"
+    (click)="getPesquisar()"
+    [disabled]="!mediaPrecocombustivelForm.valid"
+    >
+    Pesquisar
+  </button>
+
+  </div>
+</form>
+
+<div class="card mt-2 ml-2" style="width: 18rem;">
+  <div class="card-header">
+    Media por Município :
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> {{ media | currency }}</h5>
+  </div>
+</div>
+
+

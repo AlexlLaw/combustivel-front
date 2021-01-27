@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Desafio Indra</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarScroll">
+    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/historico-combustivel']" routerLinkActive="router-link-active">historico de combustiveis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/media-combustivel-municipio']" routerLinkActive="router-link-active">Media de combustivel por municipio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [routerLink]="['/distribuidoras']" routerLinkActive="router-link-active">Distribuidoras</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/controle-municipio']" routerLinkActive="router-link-active">Visualizar media de compra e venda</a>
+      </li>
+    </ul>
+  </div>
+</nav>

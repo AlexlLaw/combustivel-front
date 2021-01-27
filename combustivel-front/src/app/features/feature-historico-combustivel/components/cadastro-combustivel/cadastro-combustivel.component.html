@@ -1,0 +1,79 @@
+<form [formGroup]="combustivelForm">
+  <div class="form-row align-items-center">
+
+    <div class="col-sm-3 my-1">
+      <label >Combustivel:</label>
+      <input
+      formControlName="combustivel"
+      type="text"
+      id="combustivel"
+      name="combustivel"
+      [ngClass]="[
+          isFieldValid(combustivelForm, 'combustivel') ? 'input-invalid' : '',
+          'form-control',
+          'form-control-sm'
+       ]"
+       />
+      <div class="mt-1 text-danger text-monospace" *ngIf="isFieldValid(combustivelForm, 'combustivel')">
+        <small>{{ combustivelForm.getFirstErrorFrom('combustivel', 'Combustivel') }}</small>
+      </div>
+    </div>
+
+    <div class="col-sm-3 my-1">
+        <label >Data:</label>
+        <input
+        formControlName="data"
+        type="text"
+        id="data"
+        name="data"
+        bsDatepicker
+        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+        [ngClass]="[
+            isFieldValid(combustivelForm, 'data') ? 'input-invalid' : '',
+            'form-control',
+            'form-control-sm'
+        ]"
+        />
+        <div class="mt-1 text-danger text-monospacevvvvvv" *ngIf="isFieldValid(combustivelForm, 'data')">
+             <small>{{ combustivelForm.getFirstErrorFrom('data', 'data') }}</small>
+        </div>
+      </div>
+
+    <div class="col-sm-3 my-1">
+        <label>Preço:</label>
+        <input
+        currencyMask
+        formControlName="preco"
+        type="text"
+        id="preco"
+        name="preco"
+        [ngClass]="[
+            isFieldValid(combustivelForm, 'preco') ? 'input-invalid' : '',
+            'form-control',
+            'form-control-sm'
+        ]"
+        />
+        <div class="mt-1 text-danger text-monospace" *ngIf="isFieldValid(combustivelForm, 'preco')">
+            <small>{{ combustivelForm.getFirstErrorFrom('preco', 'Preço') }}</small>
+        </div>
+    </div>
+
+    <div class="col-sm-3 my-1 mt-4">
+      <button type="button"
+      class="btn btn-success"
+      id="salvar-combustivel"
+      (click)="save()"
+      [disabled]="!combustivelForm.valid">
+        Salvar
+      </button>
+      <button
+      type="button"
+      class="btn btn-danger ml-1"
+       (click)="voltar()">
+       Fechar
+      </button>
+    </div>
+
+  </div>
+</form>
+

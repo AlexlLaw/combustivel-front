@@ -1,0 +1,38 @@
+<h1>Medias de Compras e Vendas</h1>
+<ng-container>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Municípios</th>
+          <th>Media de valor da compra</th>
+          <th>Media de valor de venda</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let municipio of municipios  | paginate : {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        };
+      ">
+          <td>{{ municipio.atributo }}</td>
+          <td>{{ municipio.mediaValorCompra | currency}}</td>
+          <td>{{ municipio.mediaValorVenda | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex float-right">
+      <pagination-controls
+        responsive="true"
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+</ng-container>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-border text-success" role="status" *ngIf="!this.loading">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
